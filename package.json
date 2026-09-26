@@ -1,0 +1,23 @@
+{
+  "name": "shopnest-fs",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "sameer",
+    "microservice"
+  ],
+  "license": "ISC",
+  "author": "Sameer",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:server": "cd backend && npm run dev",
+    "dev:client": "cd frontend && npm start",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build": "cd frontend && npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
