@@ -1,13 +1,13 @@
+const path = require("path");
+const fs = require("fs");
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
 
+dotenv.config({ path: path.join(__dirname, ".env") });
 dotenv.config();
 connectDB();
-
-const path = require("path");
-const fs = require("fs");
 
 const app = express();
 app.use(cors());
@@ -25,7 +25,8 @@ app.use("/api/analytics", require("./routes/analyticsRoutes.js"));
 const buildPath = path.join(__dirname, "../frontend/build");
 app.use(express.static(buildPath));
 
-app.get("*", (req, res) => {
+// Catch-all handler for React Router (compatible with Express 5)
+app.use((req, res) => {
     if (req.path.startsWith("/api")) {
         return res.status(404).json({ message: "API endpoint not found" });
     }
