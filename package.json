@@ -11,11 +11,11 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "install": "cd backend && npm install && cd ../frontend && npm install",
-    "dev:server": "cd backend && npm run dev",
-    "dev:client": "cd frontend && npm start",
+    "dev:server": "npm --prefix BACKEND run dev",
+    "dev:client": "npm --prefix frontend start",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "build": "cd frontend && npm run build"
+    "build": "npm --prefix BACKEND install && npm --prefix frontend install && npm --prefix frontend run build",
+    "start": "node BACKEND/index.js"
   },
   "dependencies": {
     "concurrently": "^10.0.5"
