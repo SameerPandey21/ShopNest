@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const dns = require("dns");
 
 // Set default DNS servers to Google Public DNS to resolve SRV records properly on Windows
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+try {
+    dns.setServers(["8.8.8.8", "8.8.4.4"]);
+} catch (err) {
+    console.warn("Notice: Custom DNS servers could not be set (normal in some cloud environments):", err.message);
+}
 
 const connectDB = async () => {
     try {

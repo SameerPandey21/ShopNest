@@ -9,13 +9,16 @@
   "license": "ISC",
   "author": "Sameer",
   "type": "commonjs",
-  "main": "index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev:server": "npm --prefix BACKEND run dev",
     "dev:client": "npm --prefix frontend start",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "build": "npm --prefix BACKEND install && npm --prefix frontend install && npm --prefix frontend run build",
-    "start": "node BACKEND/index.js"
+    "start": "node BACKEND/index.js",
+    "seed": "node BACKEND/seed.js"
   },
   "dependencies": {
     "concurrently": "^10.0.5"
